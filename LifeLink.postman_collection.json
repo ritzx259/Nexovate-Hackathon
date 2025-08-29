@@ -1,0 +1,146 @@
+{
+  "info": {
+    "name": "Life Link API",
+    "_postman_id": "lifelink-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Donor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{donorToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"fullName\": \"Ram\", \"bloodGroup\": \"O+\", \"donationTypes\": [\"blood\"], \"lat\": 17.385, \"lon\": 78.4867}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/donors",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "donors"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Hospital",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{hospitalToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"ExcelR Hospital\", \"lat\": 17.44, \"lon\": 78.5}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/hospitals",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "hospitals"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{hospitalToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"requestType\": \"blood\", \"bloodGroup\": \"O+\", \"unitsNeeded\": 2, \"urgency\": \"HIGH\", \"radiusKm\": 25}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/requests",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "requests"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Matches",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{hospitalToken}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/v1/requests/{{requestId}}/matches",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "requests",
+            "{{requestId}}",
+            "matches"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "donorToken",
+      "value": ""
+    },
+    {
+      "key": "hospitalToken",
+      "value": ""
+    },
+    {
+      "key": "requestId",
+      "value": ""
+    }
+  ]
+}
